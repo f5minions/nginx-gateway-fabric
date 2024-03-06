@@ -1,20 +1,19 @@
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/nginxinc/nginx-gateway-fabric/badge)](https://api.securityscorecards.dev/projects/github.com/nginxinc/nginx-gateway-fabric)
 [![FOSSA Status](https://app.fossa.com/api/projects/custom%2B5618%2Fgithub.com%2Fnginxinc%2Fnginx-gateway-fabric.svg?type=shield)](https://app.fossa.com/projects/custom%2B5618%2Fgithub.com%2Fnginxinc%2Fnginx-gateway-fabric?ref=badge_shield)
 
-# NGINX Gateway Fabric
+# NGINX Gateway Fabric이란?
 
-NGINX Gateway Fabric is an open-source project that provides an implementation of
-the [Gateway API](https://gateway-api.sigs.k8s.io/) using [NGINX](https://nginx.org/) as the data plane. The goal of
-this project is to implement the core Gateway APIs -- `Gateway`, `GatewayClass`, `HTTPRoute`, `TCPRoute`, `TLSRoute`,
-and `UDPRoute` -- to configure an HTTP or TCP/UDP load balancer, reverse-proxy, or API gateway for applications running
-on Kubernetes. NGINX Gateway Fabric supports a subset of the Gateway API.
+NGINX Gateway Fabric은 [NGINX](https://nginx.org/)를 [K8s Gateway API](https://gateway-api.sigs.k8s.io/)의 데이터플랜으로 구현하기 위해 제공되는 오픈소스 프로젝트 입니다. 이 프로젝트의 목표는 핵심 Gateway API(`Gateway`, `GatewayClass`, `HTTPRoute`, `TCPRoute`, `TLSRoute` 및 `UDPRoute`)를 구현하여 K8s 기반의 애플리케이션에 대해 HTTP 또는 TCP/UDP 로드 밸런서, 역방향 프록시 또는 API 게이트웨이를 구성하는 것입니다. NGINX 게이트웨이 패브릭은 Gateway API의 모든 기능을 지원합니다.
 
-For a list of supported Gateway API resources and features, see
-the [Gateway API Compatibility](https://docs.nginx.com/nginx-gateway-fabric/overview/gateway-api-compatibility/) doc.
+지원하는 Gateway API 리소스 및 기능들에 대해서는 아래 링크를 참고하실 수 있습니다.
 
-Learn about our [design principles](/docs/developer/design-principles.md) and [architecture](https://docs.nginx.com/nginx-gateway-fabric/overview/gateway-architecture/).
+참고문서:[Gateway API Compatibility](https://docs.nginx.com/nginx-gateway-fabric/overview/gateway-api-compatibility/).
 
-## Getting Started
+그리고 이 오픈소스 프로젝트에 대한 전체적인 컨셉 및 디자인 아키텍처는 아래의 링크를 참고하세요.
+디자인 아키텍처 (Design principles](/docs/developer/design-principles.md) 그리고 컨셉 [Architecture](https://docs.nginx.com/nginx-gateway-fabric/overview/gateway-architecture/).
+
+
+## 시작하기
 
 1. [Quick Start on a kind cluster](https://docs.nginx.com/nginx-gateway-fabric/installation/running-on-kind/).
 2. [Install](https://docs.nginx.com/nginx-gateway-fabric/installation/) NGINX Gateway Fabric.
