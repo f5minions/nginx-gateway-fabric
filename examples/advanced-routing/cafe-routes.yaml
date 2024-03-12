@@ -26,35 +26,8 @@ spec:
         type: PathPrefix
         value: /coffee
       queryParams:
-      - name: TEST
+      - name: version
         value: v2
     backendRefs:
     - name: coffee-v2-svc
-      port: 80
----
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: tea
-spec:
-  parentRefs:
-  - name: cafe
-  hostnames:
-  - cafe.example.com
-  rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /tea
-      method: POST
-    backendRefs:
-    - name: tea-post-svc
-      port: 80
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /tea
-      method: GET
-    backendRefs:
-    - name: tea-svc
       port: 80
