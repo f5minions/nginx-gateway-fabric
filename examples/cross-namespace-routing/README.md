@@ -1,35 +1,33 @@
-# Example
+# 서로 다른 네임스페이스 참조모델 시험
 
-In this example, we expand on the simple [cafe-example](../cafe-example) by using a ReferenceGrant to route to backends
-in a different namespace from our HTTPRoutes.
+이번 예제는 앞서 진행했던 기본 카페 애플리케이션 [cafe-example](../cafe-example)에서 ReferenceGrant를 통해 백엔드의 앱이 HTTPRoute와 다른 네임스페이스에 있을 경우에 대한 확장 기능 입니다.
 
-## Running the Example
+## 시험방법
 
-## 1. Deploy NGINX Gateway Fabric
+## 1. NGINX Gateway Fabric을 배포
 
-1. Follow the [installation instructions](https://docs.nginx.com/nginx-gateway-fabric/installation/) to deploy NGINX Gateway Fabric.
+1. [설치가이드](https://docs.nginx.com/nginx-gateway-fabric/installation/)를 참고하여 NGINX Gateway Fabric을 배포 합니다.
 
-1. Save the public IP address of NGINX Gateway Fabric into a shell variable:
+1. NGINX Gateway Fabric에 대한 트래픽 시험을 위해 공인 IP를 shell 변수에 저장 합니다:
 
    ```text
    GW_IP=XXX.YYY.ZZZ.III
    ```
 
-1. Save the port of NGINX Gateway Fabric:
+1. NGINX Gateway Fabric 접속을 위한 TCP Port 정보도 동일하게 shell 변수에 저장 합니다:
 
    ```text
    GW_PORT=<port number>
    ```
 
-## 2. Deploy the Cafe Application
-
-1. Create the cafe namespace and cafe application:
+## 2. 카페 애플리케이션을 배포
+1. 먼저 카페 애플리캐이션을 위한 다른 네임스페이스를 생성 후 카페 애플리케이션을 배포 합니다:
 
    ```shell
    kubectl apply -f cafe-ns-and-app.yaml
    ```
 
-1. Check that the Pods are running in the `cafe` Namespace:
+1. `cafe` 라는 네임스페이스에 배포된 애플리케이션을 확인 합니다.:
 
    ```shell
    kubectl -n cafe get pods
@@ -41,34 +39,33 @@ in a different namespace from our HTTPRoutes.
    tea-6fb46d899f-fm7zr      1/1     Running   0          12s
    ```
 
-## 3. Configure Routing
+## 3. 카페 애플리케이션을 위한 라우팅 설정
 
-1. Create the Gateway:
+1. Gateway를 생성:
 
    ```shell
    kubectl apply -f gateway.yaml
    ```
 
-1. Create the HTTPRoute resources:
+1. HTTPRoute 리소스를 생성:
 
    ```shell
    kubectl apply -f cafe-routes.yaml
    ```
 
-1. Create the ReferenceGrant:
+1. ReferenceGrant 리소스를 생성:
 
    ```shell
    kubectl apply -f reference-grant.yaml
    ```
 
-   This ReferenceGrant allows all HTTPRoutes in the `default` Namespace to reference all Services in the `cafe`
-   Namespace.
+   이 ReferenceGrant 리소스에는 `cafe` 네임스페이스에 있는 모든 서비스에 대해서 `default` 네임스페이스에서 참조할 수 있는 권한을 부여하는 설정 입니다.
 
-## 4. Test the Application
+## 4. 애플리케이션 접속 테스트
 
-To access the application, we will use `curl` to send requests to the `coffee` and `tea` Services.
+`curl` 명령을 이용해서 `coffee` 서비스와 `tea` 서비스에 접속 테스트를 진행 합니다.
 
-To get coffee:
+ coffee 앱 서비스 접속:
 
 ```shell
 curl --resolve cafe.example.com:$GW_PORT:$GW_IP http://cafe.example.com:$GW_PORT/coffee
@@ -79,7 +76,7 @@ Server address: 10.12.0.18:80
 Server name: coffee-7586895968-r26zn
 ```
 
-To get tea:
+tea 앱 서비스 접속:
 
 ```shell
 curl --resolve cafe.example.com:$GW_PORT:$GW_IP http://cafe.example.com:$GW_PORT/tea
@@ -90,16 +87,15 @@ Server address: 10.12.0.19:80
 Server name: tea-7cd44fcb4d-xfw2x
 ```
 
-## 5. Remove the ReferenceGrant
+## 5. ReferenceGrant의 제거
 
-To restrict access to Services in the `cafe` Namespace, we can delete the ReferenceGrant we created in
-Step 3:
+Step 3에서 생성했던 ReferenceGrant 리소스를 제거하면 `cafe` 네임스페이스의 리소스에 대한 접근을 제거할 수 있으며, 애플리케이션 접속 테스트 시 백엔드 서비스와의 통신 문제로 500 에러가 발생함을 확인할 수 있습니다.
 
 ```shell
 kubectl delete -f reference-grant.yaml
 ```
 
-Now, if we try to access the application over HTTP, we will get an internal server error:
+동일하게 카페 애플리케이션을 HTTP를 통해 접속을 시도하면 다음과 같이 internal server error를 확인할 수 있습니다:
 
 ```shell
 curl --resolve cafe.example.com:$GW_PORT:$GW_IP http://cafe.example.com:$GW_PORT/tea
@@ -115,7 +111,7 @@ curl --resolve cafe.example.com:$GW_PORT:$GW_IP http://cafe.example.com:$GW_PORT
 </html>
 ```
 
-You can also check the conditions of the HTTPRoutes `coffee` and `tea` to verify that the reference is not permitted:
+그리고 이 상태에서 HTTPRoute 설정의 컨디션을 확인하면 `coffee` 서비스와 `tea` 서비스에 대해 참조가 허용되지 않았음을 확인할 수 있습니다:
 
 ```shell
 kubectl describe httproute coffee
