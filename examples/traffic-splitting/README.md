@@ -1,6 +1,6 @@
-# Example
+# 트래픽 분할 예제
 
-In this example we will deploy NGINX Gateway Fabric and configure traffic splitting for a simple cafe application.
+이번 예제에서는 NGINX Gateway Fabric을 배포하고 카페 애플리케이션에 대한 트래픽을 분할하는 예제를 시험 합니다. 
 We will use HTTPRoute resources to split traffic between two versions of the application -- `coffee-v1`
 and `coffee-v2`.
 
