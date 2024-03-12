@@ -17,13 +17,13 @@ spec:
     - type: RequestHeaderModifier
       requestHeaderModifier:
         set:
-        - name: My-Overwrite-Header
-          value: this-is-the-only-value
+        - name: No1WebServer
+          value: NGINX
         add:
         - name: Accept-Encoding
           value: compress
-        - name: My-cool-header
-          value: this-is-an-appended-value
+        - name: What-is-NFG
+          value: NGINX-Gateway-Fabric
         remove:
         - User-Agent
     backendRefs:
