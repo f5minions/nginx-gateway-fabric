@@ -15,51 +15,44 @@ NGINX Gateway Fabric은 [NGINX](https://nginx.org/)를 [K8s Gateway API](https:/
 
 ## 시작하기
 
-1. [Quick Start on a kind cluster](https://docs.nginx.com/nginx-gateway-fabric/installation/running-on-kind/).
-2. [Install](https://docs.nginx.com/nginx-gateway-fabric/installation/) NGINX Gateway Fabric.
-3. [Build](https://docs.nginx.com/nginx-gateway-fabric/installation/building-the-images/) an NGINX Gateway Fabric container image from source or use a pre-built image
-   available
-   on [GitHub Container Registry](https://github.com/nginxinc/nginx-gateway-fabric/pkgs/container/nginx-gateway-fabric).
-4. Deploy various [examples](examples).
-5. Read our [How-to guides](https://docs.nginx.com/nginx-gateway-fabric/how-to/).
+1. [kind 클러스터에서 빠르게 시작하기](https://docs.nginx.com/nginx-gateway-fabric/installation/running-on-kind/).
+2. NGINX Gateway Fabric의 [설치](https://docs.nginx.com/nginx-gateway-fabric/installation/) .
+3. 배포 이미지는 [GitHub Container Registry](https://github.com/nginxinc/nginx-gateway-fabric/pkgs/container/nginx-gateway-fabric)를 통해 사전 빌드된 이미지 또는 소스에서 NGINX Gateway Fabric 이미지를 직접 [빌드](https://docs.nginx.com/nginx-gateway-fabric/installation/building-the-images/)할 수 있습니다.
+4. 다양한[예제코드](examples)를 통해 직접 설정해보기.
+5. [사용자 가이드](https://docs.nginx.com/nginx-gateway-fabric/how-to/)를 읽어보기.
 
-You can find the comprehensive NGINX Gateway Fabric user documentation on the [NGINX Documentation](https://docs.nginx.com/nginx-gateway-fabric/) website.
 
-## NGINX Gateway Fabric Releases
+그리고 [NGINX Documentation](https://docs.nginx.com/nginx-gateway-fabric/) 웹사이트에서 상세한 NGINX Gateway Fabric에 관련된 사용자 가이드 문서를 직접 참조할 수 있습니다.
 
-We publish NGINX Gateway Fabric releases on GitHub. See
-our [releases page](https://github.com/nginxinc/nginx-gateway-fabric/releases).
+## NGINX Gateway Fabric 릴리스
 
-The latest release is [1.1.0](https://github.com/nginxinc/nginx-gateway-fabric/releases/tag/v1.1.0).
+우리는 GitHub의 [릴리스 페이지](https://github.com/nginxinc/nginx-gateway-fabric/releases)에 직접 NGINX Gateway Fabric에 퍼블리싱을 합니다.
 
-The edge version is useful for experimenting with new features that are not yet published in a release. To use, choose
-the *edge* version built from the [latest commit](https://github.com/nginxinc/nginx-gateway-fabric/commits/main)
-from the main branch.
+현재 가장 최신 버전은 [1.1.0](https://github.com/nginxinc/nginx-gateway-fabric/releases/tag/v1.1.0) 입니다.
 
-The table below summarizes the options regarding the images, manifests, documentation and examples and gives your links
-to the correct versions:
+Edge 버전은 아직 릴리스에 게시되지 않은 새로운 기능을 실험적으로 사용해보는데 유용 합니다. 사용하려면 메인 브렌치의 [최신커밋](https://github.com/nginxinc/nginx-gateway-fabric/commits/main)에서 *edge* 버전을 선택하면 됩니다.
 
-| Version        | Description                              | Installation Manifests                                                            | Documentation and Examples                                                                                                                                                 |
+아래 표에는 이미지, 매니페스트, 문서 및 예제와 관련된 옵션이 요약되어 있으며 링크가 제공 됩니다:
+
+| 버전        | 설명                              | 설치                                                            | 문서 및 예제                                                                                                                                                 |
 |----------------|------------------------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Latest release | For production use                       | [Manifests](https://github.com/nginxinc/nginx-gateway-fabric/tree/v1.1.0/deploy). | [Documentation](https://docs.nginx.com/nginx-gateway-fabric). [Examples](https://github.com/nginxinc/nginx-gateway-fabric/tree/v1.1.0/examples).                           |
-| Edge           | For experimental use and latest features | [Manifests](https://github.com/nginxinc/nginx-gateway-fabric/tree/main/deploy).   | [Documentation](https://github.com/nginxinc/nginx-gateway-fabric/tree/main/site/content). [Examples](https://github.com/nginxinc/nginx-gateway-fabric/tree/main/examples). |
+| Latest release | 프로덕션 용도                       | [패키지](https://github.com/nginxinc/nginx-gateway-fabric/tree/v1.1.0/deploy) | [문서](https://docs.nginx.com/nginx-gateway-fabric)/[예제](https://github.com/nginxinc/nginx-gateway-fabric/tree/v1.1.0/examples)                           |
+| Edge           | 가장 최신의 업데이트 기능 및 실험적 용도 | [패키지](https://github.com/nginxinc/nginx-gateway-fabric/tree/main/deploy)   | [문서](https://github.com/nginxinc/nginx-gateway-fabric/tree/main/site/content)/[예제](https://github.com/nginxinc/nginx-gateway-fabric/tree/main/examples) |
 
-### Versioning
+### 버저닝
 
-NGF uses semantic versioning for its releases. For more information, see https://semver.org.
+NGF는 시맨틱 버저닝 기반으로 릴리스를 관리 합니다. 자세한 내용은 https://semver.org 를 참고하세요
 
-> Major version zero `(0.Y.Z)` is reserved for development, anything MAY change at any time. The public API is not stable.
+> 메이저 버전 0 `(0.Y.Z)` 는 개발용으로 예약되어 있으므로 언제든지 변경될 수 있기 때문에 공개 API가 안정적이지 않을 수 있습니다.
 
-### Release Planning and Development
+### 출시 및 개발계획
 
-The features that will go into the next release are reflected in the
-corresponding [milestone](https://github.com/nginxinc/nginx-gateway-fabric/milestones). Refer to
-the [Issue Lifecycle](ISSUE_LIFECYCLE.md) document for information on issue creation and assignment to releases.
+다음 릴리스에 포함될 기능은 해당 [milestone](https://github.com/nginxinc/nginx-gateway-fabric/milestones)을 참고할 수 있으며, 이슈 생성 및 릴리스 할당에 대한 정보는 [Issue Lifecycle](ISSUE_LIFECYCLE.md) 문서를 참고할 수 있습니다.
 
 
-## Technical Specifications
+## 기술사양
 
-The following table lists the software versions NGINX Gateway Fabric supports.
+NGINX Gateway Fabric이 지원하는 소프트웨어 버전에 대한 정보는 아래 표를 참고하세요.
 
 | NGINX Gateway Fabric | Gateway API | Kubernetes | NGINX OSS | NGINX Plus |
 |----------------------|-------------|------------|-----------|------------|
@@ -73,43 +66,39 @@ The following table lists the software versions NGINX Gateway Fabric supports.
 | 0.2.0                | 0.5.1       | 1.21+      | 1.21.x *  | n/a        |
 | 0.1.0                | 0.5.0       | 1.19+      | 1.21.3    | n/a        |
 
-\*the installation manifests use the minor version of NGINX container image (e.g. 1.25) and the patch version is not
-specified. This means that the latest available patch version is used.
+\*설치패키지의 NGINX 컨테이너 이미지에서 부 버전(1.25)을 사용하고 패치 버전은 표기가 되어 있짐 않습니다. 이 부분은 가능한 최신 패치 버전이 사용됨을 의미 합니다.
 
-## SBOM (Software Bill of Materials)
+## SBOM (소프트웨어 BOM)
 
-We generate SBOMs for the binaries and the Docker image.
+바이너리 및 Docker 이미지에 대한 SBOM을 생성 합니다.
 
-### Binaries
+### 바이너리
 
-The SBOMs for the binaries are available in the releases page. The SBOMs are generated
-using [syft](https://github.com/anchore/syft) and are available in SPDX format.
+바이너리용 SBOM은 릴리스 페이지에서 사용할 수 있으며,[syft](https://github.com/anchore/syft)를 사용하여 SPDX 형식으로 제공 됩니다.
 
-### Docker Images
+### 도커이미지
 
-The SBOM for the Docker image is available in
-the [GitHub Container](https://github.com/nginxinc/nginx-gateway-fabric/pkgs/container/nginx-gateway-fabric)
-repository. The SBOM is generated using [syft](https://github.com/anchore/syft) and stored as an attestation in the
-image manifest.
+도커이미지의 SBOM은 다음에서 사용할 수 있습니다. [GitHub Container](https://github.com/nginxinc/nginx-gateway-fabric/pkgs/container/nginx-gateway-fabric)
+repository. SBOM은 [syft](https://github.com/anchore/syft)를 사용하여 생성되고 이미지 패키지 형태로 저정됩니다.
 
-For example to retrieve the SBOM for `linux/amd64` and analyze it using [grype](https://github.com/anchore/grype) you
-can run the following command:
+예를 들어, `linux/amd64`에 대한 SBOM을 검색하고 [grype](https://github.com/anchore/grype)으로 분석을 하려면 아래 예시와 같이 명령을 실행할 수 있습니다:
 
 ```shell
 docker buildx imagetools inspect ghcr.io/nginxinc/nginx-gateway-fabric:edge --format '{{ json (index .SBOM "linux/amd64").SPDX }}' | grype
 ```
 
-## Troubleshooting
+## 문제해결
 
-For troubleshooting help, see the [Troubleshooting](https://docs.nginx.com/nginx-gateway-fabric/how-to/monitoring/troubleshooting/) document.
+문제 해결을 위해서는 [Troubleshooting](https://docs.nginx.com/nginx-gateway-fabric/how-to/monitoring/troubleshooting/) 문서를 참고하시기 바랍니다.
 
-## Contacts
+## 연락하기
 
-We’d like to hear your feedback! If you experience issues with our Gateway Controller, please [open a bug][bug] in
-GitHub. If you have any suggestions or enhancement requests, please [open an idea][idea] on GitHub discussions. You can
-contact us directly via kubernetes@nginx.com or on the [NGINX Community Slack][slack] in
-the `#nginx-gateway-fabric`
-channel.
+
+여러분의 피드백을 항상 듣고 싶습니다! NGINX Gateway 컨트롤러에 문제가 발생하는 경우 깃허브의 [버그오픈][bug]로 업데이트 주실 수 있습니다.
+
+제안 사항이나 개선 요청이 있는 경우 깃허브 토론[아이디어 열기][idea]를 통해서 보내주세요. 
+
+Kubernetes@nginx.com을 통해 직접 문의하거나 `#nginx-gateway-fabric` Slack 채널의 [NGINX Community Slack]을 통해 문의할 수 있습니다.
 
 [bug]:https://github.com/nginxinc/nginx-gateway-fabric/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=
 
@@ -117,20 +106,11 @@ channel.
 
 [slack]: https://nginxcommunity.slack.com/channels/nginx-gateway-fabric
 
-## Community Meetings
+## 커뮤니티 미팅
 
-Every Monday at 9AM Pacific / 5PM GMT
+2024년 가능한 자주 커뮤니티 미팅/밋업을 통해 NGINX 커뮤니티를 활성화할 수 있도록 하겠습니다.
 
-For the meeting link, updates, agenda, and meeting notes, check the calendar below:
 
-[NGINX Gateway Fabric Meeting Calendar](https://calendar.google.com/calendar/embed?src=a82aa06dc698b4271fb562d43f38e5bf7676585e581057bde026ddd1c71f84e9%40group.calendar.google.com)
+## 지원
 
-If you have a use case for NGINX Gateway Fabric that the project can't quite meet yet, bugs, problems, success stories, or just want to be more involved with the project, come by and say hi!
-
-## Contributing
-
-Please read our [Contributing guide](CONTRIBUTING.md) if you'd like to contribute to the project.
-
-## Support
-
-NGINX Gateway Fabric is not covered by any support contract.
+NGINX Gateway Fabric은 커뮤니티 프로젝트이기 때문에 현재 F5 지원 조직을 통한 기술지원은 받을 수 없습니다. 커뮤니티 채널(slack) 및 버그 채널(github/bug)를 통해 문의하시기 바랍니다.
