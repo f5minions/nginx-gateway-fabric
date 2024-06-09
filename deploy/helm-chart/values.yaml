@@ -38,7 +38,7 @@ nginxGateway:
   image:
     ## The NGINX Gateway Fabric image to use
     repository: ghcr.io/nginxinc/nginx-gateway-fabric
-    tag: edge
+    tag: 1.2.0
     pullPolicy: Always
 
   securityContext:
@@ -55,7 +55,7 @@ nginx:
   ## The NGINX image to use
   image:
     repository: ghcr.io/nginxinc/nginx-gateway-fabric/nginx
-    tag: edge
+    tag: 1.2.0
     pullPolicy: Always
 
   ## Is NGINX Plus image being used
