@@ -28,7 +28,7 @@
     kubectl apply -f helloworld.yaml
     ```
 
-1. Check that the Pods are running in the `default` Namespace:
+1. Check that the Pods are running in the `default` 네임스페이스에 gRPC 웹 애플리케이션 Pods가 정상적으로 배포가 되었고 running 상태인지 확인 합니다.
 
     ```shell
     kubectl -n default get pods
@@ -40,26 +40,26 @@
     grpc-infra-backend-v2-546f7c8d48-mjkkx   1/1     Running   0          12s
     ```
 
-   Save these pod names into variables:
+   각각의 pod의 이름을 변수로 저장 합니다.:
 
     ```text
     POD_V1=<grpc-infra-backend-v1-xxxxxxxxxx-xxxxx>
     POD_V2=<grpc-infra-backend-v2-xxxxxxxxxx-xxxxx>
     ```
 
-## 3. Configure Routing
+## 3. gRPC에 대한 라우팅 설정을 합니다.
 
-There are 3 options to configure gRPC routing. To access the application and test the routing rules, we will use [grpcurl](https://github.com/fullstorydev/grpcurl?tab=readme-ov-file#installation).
+gRPC 라우팅 설정을 위한 3가지 옵션을 확인 합니다. gRPC 애플리케이션에 대한 접속 및 라우팅 정책의 테스트는 [grpcurl](https://github.com/fullstorydev/grpcurl?tab=readme-ov-file#installation)을 통해서 확인 합니다.
 
-### 3a. Configure exact method matching based routing
+### 3a. 정확한 정책의 일치(match)기반 라우팅 구성
 
-1. Create the Gateway and GRPCRoute resources:
+1. Gateway와 GRPCRoute 리소스의 설정 내용을 확인 후 배포 합니다.
 
     ```shell
     kubectl apply -f exact-method.yaml
     ```
 
-2. Test the Application:
+2. gRPC 애플리케이션 테스트를 해 봅니다.
 
     ```shell
     grpcurl -plaintext -proto grpc.proto -authority bar.com -d '{"name": "exact"}' ${GW_IP}:${GW_PORT} helloworld.Greeter/SayHello

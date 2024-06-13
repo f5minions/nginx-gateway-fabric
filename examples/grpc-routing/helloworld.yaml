@@ -7,7 +7,7 @@ spec:
     app: grpc-infra-backend-v1
   ports:
   - protocol: TCP
-    port: 8080
+    port: 80
     targetPort: 50051
 ---
 apiVersion: apps/v1
@@ -47,7 +47,7 @@ spec:
     app: grpc-infra-backend-v2
   ports:
   - protocol: TCP
-    port: 8080
+    port: 80
     targetPort: 50051
 ---
 apiVersion: apps/v1
