@@ -1,29 +1,28 @@
-# gRPC Routing Example
+# gRPC Routing 예제
 
-In this example, we deploy NGINX Gateway Fabric, a simple gRPC web application, and then configure NGINX Gateway Fabric
-to route traffic to that application using GRPCRoute resources.
+이번 예제에서는 간단한 gRPC 웹 애플리케이션의 배포, NGINX Gateway Fabric의 배포 그리고 NGINX Gateway Fabric의 설정을 통해 어떻게 gRPC 애플리케이션으로 트래픽을 라우팅하는가에 대해 알아보겠습니다.
 
-## Running the Example
+## 시험방법 및 절차
 
-## 1. Deploy NGINX Gateway Fabric
+## 1. 먼저 NGINX Gateway Fabric을 배포 합니다.
 
-1. Follow the [installation instructions](https://docs.nginx.com/nginx-gateway-fabric/installation/) to deploy NGINX Gateway Fabric.
+1. [설치가이드](https://docs.nginx.com/nginx-gateway-fabric/installation/)에 따라서 NGINX Gateway Fabric을 배포 합니다. 데모에서는 Helm 기반으로 NGINX Gateway Fabric을 배포하였습니다.
 
-1. Save the public IP address of NGINX Gateway Fabric into a shell variable:
+1. NGINX Gateway Fabric의 IP 주소를 shell 변수에 저장 합니다. 나중에 curl 명령어 테스트 시 이 변수를 활용 합니다.
 
     ```text
     GW_IP=XXX.YYY.ZZZ.III
     ```
 
-1. Save the port of NGINX Gateway Fabric:
+1. NGINX Gateway Fabric의 서비스 포트를 저장 합니다.
 
     ```text
     GW_PORT=<port number>
     ```
 
-## 2. Deploy the Helloworld Application
+## 2. 이제 간단한 gRPC 웹 애플리케이션을 먼저 배포 합니다.
 
-1. Create the two helloworld Deployments and Services:
+1. 아래 YAML 파일에는 helloworld라는 간단한 gRPC 웹 애플리케이션에 대한 deployment와 Service가 정의되어 있습니다. 이 YAML 파일을 실행하여 gRPC 웹 애플리케이션을 배포 합니다.
 
     ```shell
     kubectl apply -f helloworld.yaml
